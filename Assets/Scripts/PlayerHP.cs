@@ -28,10 +28,10 @@ public class PlayerHP : MonoBehaviour
 
 	void Start () 
 	{
-		Startobj = GameObject.FindGameObjectWithTag ("Start");
-		levelstart = Startobj.GetComponent <LevelStart> ();
-		playermovement = GetComponent <PlayerMovement> ();
-		rb = GetComponent <Rigidbody> ();
+		Startobj = GameObject.FindGameObjectWithTag("Start");
+		levelstart = Startobj.GetComponent<LevelStart>();
+		playermovement = GetComponent<PlayerMovement>();
+		rb = GetComponent<Rigidbody>();
 
 		PlayercurrentHP = PlayermaxHP;
 	}
@@ -42,25 +42,40 @@ public class PlayerHP : MonoBehaviour
 
 		SPSlider.value = currentsp;
 		SPSlider.maxValue = maxSP;
-		if(playermovement.jumping == true){jumpdamage = 2;} else{jumpdamage = 1;}
-		if(levelstart.levelstart == true){currentsp -= Time.deltaTime * jumpdamage;}
-		if(PlayercurrentHP >= 1){dietimer = 0.0f;}
-		if(PlayercurrentHP <= 0){dietimer += Time.deltaTime;}
-		if(dietimer >= 8){Time.timeScale = 0.1f; pausemenu.SetActive (true);}
+		if (playermovement.jumping == true) {
+            jumpdamage = 2;
+        } else {
+            jumpdamage = 1;
+        }
+		if (levelstart.levelstart == true) {
+            currentsp -= Time.deltaTime * jumpdamage;
+        }
+		if (PlayercurrentHP >= 1) {
+            dietimer = 0.0f;
+        }
+		if (PlayercurrentHP <= 0) {
+            dietimer += Time.deltaTime;
+        }
+		if (dietimer >= 8) {
+            Time.timeScale = 0.1f; 
+            pausemenu.SetActive(true);
+        }
 	}
-	public void TakeDamage (int amount)
+	public void TakeDamage(int amount)
 	{
 		//audio.Play();
 		//particleSystem.Play();
 		PlayercurrentHP -= amount;
-		if(PlayercurrentHP <= 0){Die ();}
+		if (PlayercurrentHP <= 0){ 
+            Die();
+        }
 
-		Debug.Log ("Player took damage");
+		Debug.Log("Player took damage");
 	}
-	public void SPDamage (int amount)
+	public void SPDamage(int amount)
 	{
 	}
-	public void Die ()
+	public void Die()
 	{
 		levelstart.playeralive = false;
 		levelstart.starttimer = 0.0f;
@@ -75,13 +90,13 @@ public class PlayerHP : MonoBehaviour
 		//Gameover.SetActive (true);
 		//EventSystem.current.SetSelectedGameObject(Continuebutton);
 	}
-	public void HPbonus (int amount)
+	public void HPbonus(int amount)
 	{
 		PlayermaxHP += amount;
 		PlayercurrentHP = PlayermaxHP;
 		HPSlider.value = PlayercurrentHP;
 	}
-	public void HPHeal (int amount)
+	public void HPHeal(int amount)
 	{
 		PlayercurrentHP += amount;
 		HPSlider.value = PlayercurrentHP;

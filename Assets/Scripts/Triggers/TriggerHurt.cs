@@ -11,18 +11,21 @@ public class TriggerHurt : MonoBehaviour
 	bool hashurt;
 	public int damage;
 
-	void Start () 
-	{
-		player = GameObject.FindGameObjectWithTag ("Player");
-		playerhp = player.GetComponent <PlayerHP> ();
-		rb = player.GetComponent <Rigidbody> ();
+	void Start() 
+    {
+		player = GameObject.FindGameObjectWithTag("Player");
+		playerhp = player.GetComponent<PlayerHP>();
+		rb = player.GetComponent<Rigidbody>();
 	}
-	void OnTriggerEnter (Collider other)
-	{
-		if (other.gameObject.layer == 8 && hashurt == false && rb.velocity.z > 1){playerhp.TakeDamage (damage); hashurt = true;}
+	void OnTriggerEnter(Collider other)
+    {
+		if (other.gameObject.layer == 8 && hashurt == false && rb.velocity.z > 1) {
+            playerhp.TakeDamage(damage); 
+            hashurt = true;
+        }
 	}
-	void OnTriggerExit (Collider other)
-	{
+	void OnTriggerExit(Collider other)
+    {
 		hashurt = false;
 	}
 }
