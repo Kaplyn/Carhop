@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
+using System.Collections;
 
-public class Jump : MonoBehaviour
+public class JumpButton : MonoBehaviour
 {
     GameObject player;
-    public GameObject jumpobj;
     PlayerMovement playermovement;
+
+    public GameObject jumpobj;
     public bool mouseDown;
     public float timeMouseDown;
 
@@ -19,18 +20,21 @@ public class Jump : MonoBehaviour
     void Update()
     {
         if (mouseDown) { 
-            timeMouseDown += Time.deltaTime; 
+            timeMouseDown += Time.deltaTime;
         }
     }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         mouseDown = true;
     }
+
     public void OnPointerUp(BaseEventData eventData)
     {
         mouseDown = false;
         timeMouseDown = 0;
     }
+
     public void TouchJump()
     {
         playermovement.jumpspeed = 18;

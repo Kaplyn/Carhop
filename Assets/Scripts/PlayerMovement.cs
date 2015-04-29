@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerhp = GetComponent<PlayerHP>();
     }
+
     void FixedUpdate()
     {
         movevel = rb.velocity;
@@ -137,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
         JumpUpdate();
         PlayerFriction();
     }
+
     public void Walk(float direction)
     {
         float acceleration = walkacceleration;
@@ -152,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
             movingright = true; 
         }
     }
+
     void Strafe(float strafedirection)
     {
         float strafeacceleration = strafewalkacceleration;
@@ -167,6 +170,7 @@ public class PlayerMovement : MonoBehaviour
             movingright = true; 
         }
     }
+
     void PlayerFriction()
     {
         //applying friction when grounded.
@@ -174,7 +178,7 @@ public class PlayerMovement : MonoBehaviour
         if (grounded && stopspeed > 0.0f) {
             Vector3 velocityInGroundDir = Vector3.Dot(velocity, movedirection) * movedirection;
             Vector3 newVelocityInGroundDir = velocityInGroundDir * Mathf.Lerp(1.0f, movefriction, stopspeed);
-            velocity -= (velocityInGroundDir - newVelocityInGroundDir);
+            velocity -= velocityInGroundDir - newVelocityInGroundDir;
         }
         velocity *= airfriction;
         float frictionspeed = Mathf.Abs(velocity.z);
@@ -191,6 +195,7 @@ public class PlayerMovement : MonoBehaviour
         GetComponent<Rigidbody>().velocity = velocity;
         stopspeed = 1.0f;
     }
+
     public void Jump()
     {
         jumpkeypressed = true;
@@ -206,17 +211,19 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Rigidbody>().velocity = jumpvel;
         }
     }
+
     void JumpUpdate()
     {
         if (!jumpkeypressed && jumping) {
             jumppingtimeleft = 0;
             jumping = false;
         }
-        jumpkeypressed = false;
         if (jumppingtimeleft != 0) { 
             jumppingtimeleft--; 
         }
+        jumpkeypressed = false;
     }
+
     void ApplyGravity()
     {
         if (!grounded) { 

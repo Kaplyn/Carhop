@@ -54,7 +54,7 @@
      <Compile Include="Assets\Scripts\GroundDetecter.cs" />
      <Compile Include="Assets\Scripts\Groundfriction.cs" />
      <Compile Include="Assets\Scripts\HUDFPS.cs" />
-     <Compile Include="Assets\Scripts\Jump.cs" />
+     <Compile Include="Assets\Scripts\JumpButton.cs" />
      <Compile Include="Assets\Scripts\LevelStart.cs" />
      <Compile Include="Assets\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\Scripts\PlayerHP.cs" />
@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\Triggers\RightCenter.cs" />
      <Compile Include="Assets\Scripts\Triggers\RightRight.cs" />
      <Compile Include="Assets\Scripts\Triggers\TriggerHurt.cs" />
+     <Compile Include="Assets\Scripts\Turbo.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/Unity Editor/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
